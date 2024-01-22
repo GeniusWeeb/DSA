@@ -1,13 +1,20 @@
 
-from JustANode import Node
-class Linked :
+from JustANode import Node , DoubleNode
 
-    def __init__(self):
+### Util class for all kind of Linked List
+
+class Linked :
+      def __init__(self):
         self.head = None
         self.size = 0
         self.tail = None
         self.current = None
         self.previous = None
+        
+
+class SingleLinked(Linked) :
+    def __init__(self):
+        super().__init__()
 #Inserting the node at the begining    
 
     #Time complexity -> O(1)
@@ -115,9 +122,93 @@ class Linked :
             print(f"{self.current.data} and next is {self.current.next}")
             self.current = self.current.next
             self.DrawThisNode(self.current.data)
+
+class DoubleLinkedList(Linked):  
+    def __init__(self):
+        super().__init__()  
+        
+    #Add the node at the start  -> O(1)          
+    def AddNewNodeAtStart(self, value):
+        node = DoubleNode(value)
+        
+        if self.head is None:
+            self.head = node 
+            self.head.prev  = None
+            return
+        
+        #more than 1 element
+        self.head.prev = node
+        node.next = self.head  # we are assigning the node present at the head of the List to the next pointer
+        self.head = node
+        self.head.prev = None
+        
+        self.size+=1
+        
+    #Add the node at the end -> O(1) after the tail is defined but
+    #In general terms additions at the end is Linear Time O(n)
+    def AddNewNodeAtTheEnd(self,value):
+        
+        newNode = DoubleNode(value)
+    
+        #if the head is None ,empty List just add the node    
+        if self.Head is None:
+            self.AddNewNodeAtStart(value)
+            return
+   
+        self.current = self.head
+
+        while self.current.next is not None:
+            self.previous = self.current
+            self.current = self.current.next
+
+        #break when the next pointer says null        
+        
+        self.current.next = newNode
+        self.tail = newNode  #tail now contains the default implment of the node , i.e all None
+        self.tail.next = None
+        self.tail.prev = self.current
+       
+        
+        self.size+=1
+        
+    
+    def RemoveFirstNode(self):
+        
+        if self.head is None:   
+            return "Empty List ! nothing to remove"
+        if self.head.next is None: #1 element
+            self.head = None
+            print("Removed element")
+        
+        #More than 1 element , just break the Link
+        self.head = self.head.next 
+        self.head.prev = None    
             
+    def RemoveLastNode(self):
+        
+        if self.head == None:
+           return 
+        
+        if self.head.next is None : # 1 element
+            self.head = None
+            self.size -=1
+            return
+        
+        self.current = self.head
+        
+        while self.current.next is not None:
+            self.previous = self.current
+            self.current = self.current.next  
             
-            
-            
-            
-          
+        self.tail= self.previous
+        self.tail.next = None
+        self.size-=1           
+        print(f"Remove last node , current last node is {self.tail.data} and its previous element is {self.tail.prev.data}" )
+        
+    #Just iterate and print 
+    def ShowAllNodes(self):
+        
+        self.current = self.head
+        while self.current is not None: 
+            print(f"node is ->{self.current.data}")
+            self.current = self.current.next 
