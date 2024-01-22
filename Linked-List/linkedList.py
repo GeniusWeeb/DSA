@@ -56,6 +56,7 @@ class Linked :
     
         self.size-=1        
 
+    #Time complexity -> Linear -> O(n)
     def RemoveLast(self):  
         #Empty
        
@@ -80,7 +81,8 @@ class Linked :
                 self.tail = self.previous
     
         self.size-=1  
-            
+     
+    #Time complexity -> Linear -> O(n)       
     #We need to add a Find and contain  
     def ContainsElement(self, value):
         self.current = self.head   
@@ -90,8 +92,7 @@ class Linked :
                 return True
             self.current = self.current.next            
      
-        return False    
-    
+        return False        
     #Gets the position
     def SearchAndGetPosition(self, value):
         pos = 0
@@ -107,7 +108,7 @@ class Linked :
         
         return None       
 
-    
+    #Time complexity -> Linear -> O(n)
     def ShowAllNodes(self):
         self.current = self.head
         while(self.current is not None):
