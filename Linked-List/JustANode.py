@@ -4,5 +4,5 @@ class Node:
     data= None
         
     def __init__(self, value):
-            self.data = value
+        self.data = value
                         
