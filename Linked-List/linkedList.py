@@ -23,6 +23,7 @@ class Linked :
             self.head = n
             
         self.size+=1
+        print( f"Added new node with data-> {value} , size is {self.size} ")
            
     #Time complexity -> O(1)        
     def AddLastNode(self,value):
@@ -39,8 +40,7 @@ class Linked :
             n.next = None
     
         self.size+=1       
-        
-
+    
     #Remvoes the first element from the Linked list1
     #Time complexity of O(1)
     def RemoveFirst(self):
@@ -56,7 +56,6 @@ class Linked :
     
         self.size-=1        
 
-                  
     def RemoveLast(self):  
         #Empty
        
@@ -82,4 +81,42 @@ class Linked :
     
         self.size-=1  
             
+    #We need to add a Find and contain  
+    def ContainsElement(self, value):
+        self.current = self.head   
+             
+        while(self.current != None):  #important so we dont skip the last element
+            if self.current.data == value:
+                return True
+            self.current = self.current.next            
+     
+        return False    
+    
+    #Gets the position
+    def SearchAndGetPosition(self, value):
+        pos = 0
+        self.current = self.head
+        
+        while(self.current is not None):
+            
+            if value == self.current.data:
+                return pos+1
+            
+            self.current =  self.current.next
+            pos+=1
+        
+        return None       
 
+    
+    def ShowAllNodes(self):
+        self.current = self.head
+        while(self.current is not None):
+            print(f"{self.current.data} and next is {self.current.next}")
+            self.current = self.current.next
+            self.DrawThisNode(self.current.data)
+            
+            
+            
+            
+            
+          
