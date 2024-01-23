@@ -3,6 +3,10 @@ from JustANode import Node , DoubleNode
 
 ### Util class for all kind of Linked List
 
+
+#Sequential data structure -> Entry via head only 
+#Search time complexity for anything other than head or tail is Linear else constant for them.
+
 class Linked :
       def __init__(self):
         self.head = None
@@ -11,7 +15,9 @@ class Linked :
         self.current = None
         self.previous = None
         
+        
 
+#node only points in front
 class SingleLinked(Linked) :
     def __init__(self):
         super().__init__()
@@ -123,12 +129,14 @@ class SingleLinked(Linked) :
             self.current = self.current.next
             self.DrawThisNode(self.current.data)
 
+
+# Node has previous node pointer as well
 class DoubleLinkedList(Linked):  
     def __init__(self):
         super().__init__()  
         
     #Add the node at the start  -> O(1)          
-    def AddNewNodeAtStart(self, value):
+    def AddNodeAtStart(self, value):
         node = DoubleNode(value)
         
         if self.head is None:
@@ -212,3 +220,35 @@ class DoubleLinkedList(Linked):
         while self.current is not None: 
             print(f"node is ->{self.current.data}")
             self.current = self.current.next 
+
+
+#The last element is poting to the first element
+class CircularLinkedList(Linked):
+    
+    def __init__(self):
+        super().__init__()
+    
+    
+    def AddNodeAtStart(self, value):    
+        #just to have best of both in case, we go for the doubly linkned circular list    
+        new_node = DoubleNode()
+        if self.head is None:   
+            self.head = new_node = self.tail  
+            self.head.next = new_node 
+            self.tail.next = new_node
+            return
+        
+        #add new element, connec the next of current head to this
+       #Circular
+        new_node.next =self.head       
+        self.tail.next = new_node 
+        self.head.next = new_node
+        self.head = new_node
+        
+
+        #Computation mostly same 
+        #Never has null , last node points to HEAD so always iterate till there
+            
+    
+    
+        
