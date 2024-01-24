@@ -84,6 +84,7 @@ def ElementLeaders(arr,pos=0):
     
     global_list.append(max)
     return ElementLeaders(arr,pos+1)        
+
 def ElementLeadersAlternate(arr):
     size = len(arr)
     for i in range(size):
@@ -91,14 +92,29 @@ def ElementLeadersAlternate(arr):
             if arr[i]<arr[j]:
                 break
         global_list.append(arr[i])    
+
+def PairSum(arr ,sumX):
+    size  = len(arr)
+    flag  = False
+    for index in range(size):
+        for jindex in range(index+1, size):
+            if(arr[index]+arr[jindex] == sumX):
+                print(f"Found Sum, pairs are  {arr[index]} and { arr[jindex]}")
+                flag = True
+              #  return
+    if flag is True:
+        return
+    print("No sum pair found")
 #endregion
 if __name__ == '__main__':
   #  l = [16, 17, 4, 3, 5, 2] 
-    l = [16, 17, 4, 3, 5, 2] 
+    l = [0, -1, 2, -3, 1] 
+    lsorted =  []
 
    # item =input("enter a number to delete->   ")
    # ReverseArray(l)
-    ElementLeaders(l)
+   # ElementLeaders(l)
+    PairSum(l,-2)
     print(global_list)
 
  
