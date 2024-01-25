@@ -31,8 +31,6 @@ def DeleteElement(item,arr):
         arr[i] =  arr[i+1]
     
     return 1 
-
-
 #endregion
 #region Sorted methods
 #------->Binary Search -> Keep splitting into 2 and reach the correct mid element
@@ -53,6 +51,7 @@ def FindElementSorted(arr, item , low, high):
     return -1
     
 #endregion
+
 #region General Problems
 #Linear time -> 2 pointer apprach
 def ReverseArray(arr):
@@ -111,7 +110,7 @@ def OddOccurence(arr):
             return  
 
 
-#Kadane Algorithm -> Interesting
+#Kadane's Algorithm -> Interesting
 # for positive sum
 def SubArraySum(arr):
     size = len(arr)
@@ -141,10 +140,25 @@ def SubArraySum(arr):
                  
     print(f"Array is {startElement} and {endElement}")
     return Fmax       
-                
-            
-           
 
+def MissingElement(arr):
+    # N factorial -> n+= i
+    # current array
+    
+    #8
+    n= len(arr) 
+    arrSum = 0
+    facSum = 0
+    for i in range(0, n-1): # Array index wise acess
+        arrSum += arr[i]
+    
+    facSum =  n * (n+1)/2 # Sum of n natural numbers
+     
+     
+    print("missing number is ", int(facSum - arrSum))    
+    
+                
+        
 def PairSum(arr ,sumX):
     size  = len(arr)
     flag  = False
@@ -160,7 +174,7 @@ def PairSum(arr ,sumX):
 #endregion
 if __name__ == '__main__':
   #  l = [16, 17, 4, 3, 5, 2] 
-    l =  [-2, -3, 4, -1, -2, 1, 5, -3]
+    l =  [1, 2, 3, 5]
     lsorted =  []
 
    # item =input("enter a number to delete->   ")
@@ -168,11 +182,13 @@ if __name__ == '__main__':
    # ElementLeaders(l)
    # PairSum(l,-2)
    # OddOccurence(l)
-    max =  SubArraySum(l)
-    print("MAX IS " , max)
+   # max =  SubArraySum(l)
+   
+    MissingElement(l)
    
 
  
+
 
 
 
