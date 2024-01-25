@@ -93,6 +93,58 @@ def ElementLeadersAlternate(arr):
                 break
         global_list.append(arr[i])    
 
+#element whose freuquency is > n/2
+def MajorityElement():
+    pass
+
+#Time -> O(n^2)
+def OddOccurence(arr):
+    size  = len(arr)
+    
+    for index in range( 0 , size):
+        count = 0
+        for jIndex in range(size):
+            if(arr[index] == arr[jIndex]):
+                count+=1
+        if(count % 2 != 0):#Odd
+            print("oddly occuring number is " , arr[index])
+            return  
+
+
+#Kadane Algorithm -> Interesting
+# for positive sum
+def SubArraySum(arr):
+    size = len(arr)
+    Fmax  = -1e8
+    maxHere = 0
+    startElement = 0
+    endElement = 0
+    s= 0
+    
+    for x in range(size):
+        if(x+1 == size):
+            break
+        
+        maxHere += arr[x]
+        
+        if maxHere > Fmax:
+            Fmax = maxHere
+            startElement= s
+            endElement= x
+        
+        
+        #Interesting part
+        if maxHere < 0:
+            maxHere = 0
+            s+=1
+            
+                 
+    print(f"Array is {startElement} and {endElement}")
+    return Fmax       
+                
+            
+           
+
 def PairSum(arr ,sumX):
     size  = len(arr)
     flag  = False
@@ -108,14 +160,17 @@ def PairSum(arr ,sumX):
 #endregion
 if __name__ == '__main__':
   #  l = [16, 17, 4, 3, 5, 2] 
-    l = [0, -1, 2, -3, 1] 
+    l =  [-2, -3, 4, -1, -2, 1, 5, -3]
     lsorted =  []
 
    # item =input("enter a number to delete->   ")
    # ReverseArray(l)
    # ElementLeaders(l)
-    PairSum(l,-2)
-    print(global_list)
+   # PairSum(l,-2)
+   # OddOccurence(l)
+    max =  SubArraySum(l)
+    print("MAX IS " , max)
+   
 
  
 
