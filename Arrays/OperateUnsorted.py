@@ -109,7 +109,6 @@ def OddOccurence(arr):
             print("oddly occuring number is " , arr[index])
             return  
 
-
 #Kadane's Algorithm -> Interesting
 # for positive sum
 def SubArraySum(arr):
@@ -143,8 +142,7 @@ def SubArraySum(arr):
 
 def MissingElement(arr):
     # N factorial -> n+= i
-    # current array
-    
+    # current array   
     #8
     n= len(arr) 
     arrSum = 0
@@ -157,8 +155,9 @@ def MissingElement(arr):
      
     print("missing number is ", int(facSum - arrSum))    
     
-                
-        
+def SearchSortedAndRotatedArray():
+    pass                
+                      
 def PairSum(arr ,sumX):
     size  = len(arr)
     flag  = False
